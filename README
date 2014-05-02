@@ -1,0 +1,11 @@
+GOVF
+====
+
+GOVF is a library that serves as a brige between Open Virtualization Format
+(OVF)[1] and libvirt[2]. Its API allows you to create libvirt domains (or only
+configuration XML) from OVF files and vice versa.
+
+GOVF is free software released under the GNU LGPL.
+
+[1] https://en.wikipedia.org/wiki/Open_Virtualization_Format
+[2] http://libvirt.org/

@@ -1,0 +1,11 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+Name: govf-1.0
+Description: Library to convert from OVF to libvirt domains and viceversa
+Version: @VERSION@
+Libs: -L${libdir} -lgovf-1.0
+Cflags: -I${includedir}/govf-1.0
+Requires.private: gobject-1.0 libvirt-gobject-1.0 libxml-2.0
