@@ -1,0 +1,31 @@
+* High-level API (at least at start)
+
+public class Govf.Importer : GLib.Object {
+    public string ova_file_path { construct set; get; }
+
+    public async Importer (string ova_file_path) throws GLib.Error;
+
+    // Either @pool or @storage_dir_path must be provided
+    public async GVir.Domain create_domain (GVir.Connection   connection,
+                                            GVir.StoragePool? pool,
+                                            string?           storage_dir_path) throws GLib.Error;
+    public GVirConfig.Domain create_config (string storage_dir_path) throws GLib.Error;
+    public GLib.List<string> list_disks () throws GLib.Error;
+    public async File extract_disk (string name, string storage_dir_path) throws GLib.Error;
+}
+
+public class Govf.Exporter : GLib.Object {
+    public GVirConfig.Domain domain_config { construct set; get; }
+
+    public Exporter (GVirConfig.Domain domain_config);
+    public Exporter.for_domain (GVir.Domain domain);
+
+    public async File export_to_path (string path) throws GLib.Error;
+}
+
+* Commandline tools
+  * govf-import [--connect URI] OVA_FILE STORAGE_POOL_NAME|STORAGE_PATH
+  * govf-export [--connect URI] DOMAIN_NAME|CONFIG_FILE [OVA_FILE]
+
+
+* Progress reporting from import/export operations?
